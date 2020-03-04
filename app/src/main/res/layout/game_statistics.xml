@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/statisticsHeaderTextView"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Statistics"
         android:textColor="@color/statisticsScreenTextColor"
@@ -23,11 +23,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/statisticsTextViewMargin"
-        android:layout_marginEnd="@dimen/defaultDimension"
         android:text="Player:"
         android:textColor="@color/playerLabelColor"
         android:textSize="25sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/statisticsHeaderTextView" />
 
     <TextView
@@ -35,19 +35,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/defaultDimension"
-        android:layout_marginEnd="@dimen/defaultDimension"
         android:text="Opponent:"
         android:textColor="@color/opponentLabelColor"
         android:textSize="25sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/playerTextView" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="140dp" />
 
     <TextView
         android:id="@+id/playerScoreTextView"
@@ -75,18 +68,18 @@
 
     <Button
         android:id="@+id/restartButton"
-        android:layout_width="177dp"
-        android:layout_height="52dp"
+        android:layout_width="176dp"
+        android:layout_height="59dp"
         android:layout_marginTop="@dimen/defaultDimension"
         android:background="#4aabbd"
         android:text="Restart"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.062"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/opponentTextView"
-        app:layout_constraintVertical_bias="0.068" />
+        app:layout_constraintVertical_bias="0.065" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
