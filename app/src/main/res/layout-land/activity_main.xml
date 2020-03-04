@@ -9,6 +9,7 @@
 
 
     <include
+        android:id="@+id/include3"
         layout="@layout/game_board_main"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -22,18 +23,11 @@
         android:id="@+id/include"
         layout="@layout/game_statistics"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@+id/guideline6"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/include3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></include>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="241dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

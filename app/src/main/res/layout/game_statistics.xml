@@ -3,15 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:minWidth="640dp"
-    android:minHeight="500dp">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/statisticsHeaderTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/defaultDimension"
         android:text="Statistics"
         android:textColor="@color/statisticsScreenTextColor"
         android:textSize="35sp"
@@ -88,8 +85,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/opponentTextView"
         app:layout_constraintVertical_bias="0.068" />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
