@@ -2,10 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/gameStatistics"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:minWidth="510dp"
-    android:minHeight="425dp">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/statisticsHeaderTextView"
@@ -13,7 +12,7 @@
         android:layout_height="wrap_content"
         android:text="Statistics"
         android:textColor="@color/statisticsScreenTextColor"
-        android:textSize="35sp"
+        android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,9 +22,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/statisticsTextViewMargin"
-        android:text="Player:"
+        android:text="@string/player_1"
         android:textColor="@color/playerLabelColor"
-        android:textSize="25sp"
+        android:textSize="19sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/statisticsHeaderTextView" />
@@ -35,9 +34,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/defaultDimension"
-        android:text="Opponent:"
+        android:text="@string/ai_1"
         android:textColor="@color/opponentLabelColor"
-        android:textSize="25sp"
+        android:textSize="19sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/playerTextView" />
@@ -46,11 +45,11 @@
         android:id="@+id/playerScoreTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="6dp"
         android:layout_marginTop="56dp"
         android:text="0"
         android:textColor="@color/statisticsScreenTextColor"
-        android:textSize="25sp"
+        android:textSize="19sp"
         app:layout_constraintStart_toEndOf="@+id/playerTextView"
         app:layout_constraintTop_toBottomOf="@+id/statisticsHeaderTextView" />
 
@@ -58,20 +57,21 @@
         android:id="@+id/opponentScoreTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="6dp"
         android:layout_marginTop="14dp"
         android:text="0"
         android:textColor="@color/statisticsScreenTextColor"
-        android:textSize="25sp"
+        android:textSize="19sp"
         app:layout_constraintStart_toEndOf="@+id/opponentTextView"
         app:layout_constraintTop_toBottomOf="@+id/playerScoreTextView" />
 
     <Button
         android:id="@+id/restartButton"
-        android:layout_width="176dp"
-        android:layout_height="59dp"
+        android:layout_width="137dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/defaultDimension"
         android:background="#4aabbd"
+        android:onClick="restartAll"
         android:text="Restart"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -85,10 +85,11 @@
         android:id="@+id/switch1"
         android:layout_width="40dp"
         android:layout_height="23dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="108dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="88dp"
         android:layout_marginEnd="192dp"
         android:checked="true"
+        android:onClick="playerControlChanged"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/opponentScoreTextView"
@@ -98,14 +99,56 @@
         android:id="@+id/switch2"
         android:layout_width="40dp"
         android:layout_height="23dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="16dp"
         android:autoText="false"
         android:checked="false"
+        android:onClick="playerControlChanged"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/opponentScoreTextView"
         app:layout_constraintTop_toBottomOf="@+id/switch1" />
+
+    <RadioGroup
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.005"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/statisticsHeaderTextView">
+
+        <TextView
+            android:id="@+id/who_starts_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Who starts"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/first_radio"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:checked="true"
+            android:onClick="whoGoesFirst"
+            android:text="@string/player_1"
+            android:textColor="@color/playerLabelColor"
+            android:textSize="16p" />
+
+        <RadioButton
+            android:id="@+id/second_radio"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="whoGoesFirst"
+            android:text="@string/ai_1"
+            android:textColor="@color/opponentLabelColor"
+            android:textSize="16sp" />
+    </RadioGroup>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

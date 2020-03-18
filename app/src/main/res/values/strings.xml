@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="player_1">Player1</string>
+    <string name="player_2">Player2</string>
+    <string name="ai_1">AI_1</string>
+    <string name="ai_2">AI_2</string>
 </resources>

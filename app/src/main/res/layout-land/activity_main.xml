@@ -8,26 +8,32 @@
     tools:context=".MainActivity">
 
 
-    <include
-        android:id="@+id/include3"
-        layout="@layout/game_board_main"
+    <FrameLayout
+        android:id="@+id/frameLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/include"
-        app:layout_constraintTop_toTopOf="parent"></include>
+        app:layout_constraintStart_toEndOf="@+id/gameStatistics"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <include
+            android:id="@+id/gameBoardMain"
+            layout="@layout/game_board_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical" />
+    </FrameLayout>
 
     <include
-        android:id="@+id/include"
+        android:id="@+id/gameStatistics"
         layout="@layout/game_statistics"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/include3"
+        app:layout_constraintEnd_toStartOf="@+id/frameLayout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></include>
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
