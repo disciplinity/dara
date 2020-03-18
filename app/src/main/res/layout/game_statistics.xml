@@ -137,7 +137,7 @@
             android:onClick="whoGoesFirst"
             android:text="@string/player_1"
             android:textColor="@color/playerLabelColor"
-            android:textSize="16p" />
+            android:textSize="16sp" />
 
         <RadioButton
             android:id="@+id/second_radio"
