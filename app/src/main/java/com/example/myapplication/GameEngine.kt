@@ -30,6 +30,7 @@ class GameEngine() {
     val boardWidth = 6
     val boardHeight = 5
     var playerOnesTurn = true
+    var canChangeWhosTurnItIs = true
     var playerOneIsRealPlayer = true
     var playerTwoIsRealPlayer = false
 
@@ -59,20 +60,26 @@ class GameEngine() {
 
     var timerHasStarted = false
     lateinit var timer : Timer
-    var timerTask = object : TimerTask() {
-        override fun run() {
-            if (isAiTurn()) {
-                val turnResult = startAI()
-                uiController.changeUIAccordingToResult(turnResult)
-//                if (turnResult.phase == Phase.GAME_OVER) stopAITimer()
-            }
-        }
-    }
 
     fun activateAITimer() {
         timer = Timer()
+        var timerTask = object : TimerTask() {
+            override fun run() {
+                if (isAiTurn()) {
+                    val turnResult = startAI()
+                    uiController.changeUIAccordingToResult(turnResult)
+                }
+            }
+        }
         timer.scheduleAtFixedRate(timerTask,0,1000)
         timerHasStarted = true
+    }
+
+    fun stopAITimer() {
+        if (timerHasStarted) {
+            timerHasStarted = false
+            timer.cancel()
+        }
     }
 
     private fun generateBoard() {
@@ -90,6 +97,7 @@ class GameEngine() {
     }
 
     fun makeTurn(buttonName: String) : TurnResult {
+        if (canChangeWhosTurnItIs) canChangeWhosTurnItIs = false
         val currentPhase = findCurrentPhase()
 
         val tilePos = getTileRowAndColByButtonName(buttonName)
@@ -195,7 +203,6 @@ class GameEngine() {
 
             Phase.GAME_OVER -> {
                 turnResult =  TurnResult(currentPhase, true, playerOnesTurn, null)
-//                stopAITimer()
                 Log.d("TAG", "GAME OVER!")
             }
         }
@@ -323,6 +330,13 @@ class GameEngine() {
         playerTwoTokensPlaced = 0
         playerOneScore = 0
         playerTwoScore = 0
+        canChangeWhosTurnItIs = true
+        playerOnesTurn = true
+
+        if (timerHasStarted) {
+            stopAITimer() // stops previous timer
+            activateAITimer()
+        }
 
 
         currentlyChosenTile = null

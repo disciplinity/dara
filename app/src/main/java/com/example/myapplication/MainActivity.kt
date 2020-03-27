@@ -74,7 +74,9 @@ class MainActivity : AppCompatActivity() {
 
     fun whoGoesFirst(view : View) {
         val radButtonId = view.resources.getResourceEntryName(view.id)
-        gameEngine.playerOnesTurn = radButtonId == "first_radio"
+        if (gameEngine.canChangeWhosTurnItIs) {
+            gameEngine.playerOnesTurn = radButtonId == "first_radio"
+        }
     }
 
     fun restartAll(view : View) {
@@ -83,11 +85,6 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<RadioButton>(radButton1).isChecked = true
         redrawBoard()
-
-
-        if (!gameEngine.timerHasStarted) {
-            gameEngine.activateAITimer()
-        }
     }
 
     fun redrawBoard() {
